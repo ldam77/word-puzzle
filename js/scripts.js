@@ -1,7 +1,9 @@
 $(document).ready(function(){
+  var stringInput = "";
+
   $("#word-puzzle").submit(function(event){
     event.preventDefault();
-    var stringInput = $("input#puzzle").val();
+    stringInput = $("input#puzzle").val();
     var inputArray = stringInput.split("");
 
     var outputArray = inputArray.map(function(letter){
@@ -15,12 +17,16 @@ $(document).ready(function(){
     var outputString = "";
     for (count = 0; count < outputArray.length; count +=1){
       outputString = outputString.concat(outputArray[count]);
-      debugger;
     }
 
-    document.getElementById("word-puzzle").reset();
+    // document.getElementById("word-puzzle").reset();
+    $("#word-puzzle").trigger("reset");
 
     $("#output").text(outputString);
+    $(".output-area").show();
 
+  });
+  $("button#reveal").click(function(){
+    $("#output-reveal").text(stringInput);
   });
 });
