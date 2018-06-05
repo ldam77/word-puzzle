@@ -1,3 +1,7 @@
 .output-area {
   display: none;
 }
+
+#output-reveal {
+  display: none;
+}

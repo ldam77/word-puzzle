@@ -23,10 +23,27 @@ $(document).ready(function(){
     $("#word-puzzle").trigger("reset");
 
     $("#output").text(outputString);
+    $("#output-reveal").text(stringInput);
+
     $(".output-area").show();
+    $("#word-puzzle").hide();
 
   });
+
+  $("#guess-form").submit(function(event){
+    event.preventDefault();
+
+    var guessInput = $("input#guess").val();
+    if(guessInput === stringInput){
+      $("#guess-output").text("Nice job!");
+      $("#output-reveal").show();
+    } else {
+      $("#guess-output").text("Sorry, try again!");
+    }
+
+  });
+
   $("button#reveal").click(function(){
-    $("#output-reveal").text(stringInput);
+    $("#output-reveal").fadeToggle();
   });
 });
